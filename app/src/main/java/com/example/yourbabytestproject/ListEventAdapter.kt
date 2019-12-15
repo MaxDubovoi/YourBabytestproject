@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.yourbabytestproject.databinding.TextItemViewBinding
 
 class ListEventAdapter(val clickListener: ItemClickListener) :
-    ListAdapter<ListItem, ListEventAdapter.ViewHolder>(ListItemDiffCallback()) {
+    ListAdapter<EventProperty, ListEventAdapter.ViewHolder>(ListItemDiffCallback()) {
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -25,7 +25,7 @@ class ListEventAdapter(val clickListener: ItemClickListener) :
     class ViewHolder private constructor(private val binding: TextItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
-            item: ListItem,
+            item: EventProperty,
             clickListener: ItemClickListener
         ) {
             Log.i("Recycler", "BINDING")
@@ -34,7 +34,7 @@ class ListEventAdapter(val clickListener: ItemClickListener) :
             binding.shortDescription.text = item.shortDescription
             binding.clickListener = clickListener
             binding.itemIc.setImageResource(
-                when (item.eventId) {
+                when (item.imageId) {
                     1 -> R.drawable.ic_u1
                     2 -> R.drawable.ic_u2
                     3 -> R.drawable.ic_u3
@@ -55,19 +55,19 @@ class ListEventAdapter(val clickListener: ItemClickListener) :
         }
     }
 
-    class ListItemDiffCallback : DiffUtil.ItemCallback<ListItem>() {
-        override fun areItemsTheSame(oldItem: ListItem, newItem: ListItem): Boolean {
-            return oldItem.eventId == newItem.eventId
+    class ListItemDiffCallback : DiffUtil.ItemCallback<EventProperty>() {
+        override fun areItemsTheSame(oldItem: EventProperty, newItem: EventProperty): Boolean {
+            return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: ListItem, newItem: ListItem): Boolean {
+        override fun areContentsTheSame(oldItem: EventProperty, newItem: EventProperty): Boolean {
             return oldItem == newItem
         }
 
     }
 
-    class ItemClickListener(val clickListener: (eventId: Int) -> Unit) {
-        fun onClick(item: ListItem) = clickListener(item.eventId)
+    class ItemClickListener(val clickListener: (id: Int) -> Unit) {
+        fun onClick(item: EventProperty) = clickListener(item.id)
     }
 
 

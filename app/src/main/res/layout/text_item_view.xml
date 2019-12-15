@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.example.yourbabytestproject.ListItem" />
+            type="com.example.yourbabytestproject.EventProperty" />
 
         <variable
             name="clickListener"
