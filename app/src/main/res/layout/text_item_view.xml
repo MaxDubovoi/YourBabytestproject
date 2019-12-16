@@ -37,7 +37,7 @@
             tools:srcCompat="@drawable/ic_doctor" />
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/event_title"
             android:layout_width="0dp"
             android:layout_height="20dp"
             android:layout_marginStart="16dp"
@@ -57,7 +57,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/item_ic"
-            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintTop_toBottomOf="@+id/event_title"
             tools:text="Short Description" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

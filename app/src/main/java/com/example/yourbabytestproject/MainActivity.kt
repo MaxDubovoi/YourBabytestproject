@@ -1,5 +1,6 @@
 package com.example.yourbabytestproject
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -13,8 +14,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: ListViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val adapter = ListEventAdapter(ListEventAdapter.ItemClickListener { eventId ->
+        val adapter = ListEventAdapter(ListEventAdapter.ItemClickListener { property ->
             Log.i("Recycler", "CLICK!!!!")
+            val intent = Intent(this, EventActivity::class.java)
+            intent.putExtra("id", property.id)
+            intent.putExtra("title", property.title)
+            intent.putExtra("imageId", property.imageId)
+            intent.putExtra("shortDescription", property.shortDescription)
+            startActivity(intent)
+
         })
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.list.adapter = adapter

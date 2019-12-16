@@ -7,6 +7,7 @@ import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 private const val BASE_URL = "https://my.api.mockaroo.com"
 private val moshi = Moshi.Builder()
@@ -22,6 +23,10 @@ interface MockarooApiService {
     @GET("event_table.json?key=b9bf5250")
     fun getEvents():
             Deferred<List<EventProperty>>
+
+    @GET("event_info/{id}.json?key=b9bf5250")
+        fun getEventInfoById(@Path("id") id: String):
+            Deferred<EventInfo>
 }
 
 object MockarooApi {

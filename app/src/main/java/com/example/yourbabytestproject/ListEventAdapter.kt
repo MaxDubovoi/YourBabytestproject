@@ -30,7 +30,7 @@ class ListEventAdapter(val clickListener: ItemClickListener) :
         ) {
             Log.i("Recycler", "BINDING")
             binding.item = item
-            binding.title.text = item.title
+            binding.eventTitle.text = item.title
             binding.shortDescription.text = item.shortDescription
             binding.clickListener = clickListener
             binding.itemIc.setImageResource(
@@ -66,8 +66,8 @@ class ListEventAdapter(val clickListener: ItemClickListener) :
 
     }
 
-    class ItemClickListener(val clickListener: (id: Int) -> Unit) {
-        fun onClick(item: EventProperty) = clickListener(item.id)
+    class ItemClickListener(val clickListener: (item: EventProperty) -> Unit) {
+        fun onClick(item: EventProperty) = clickListener(item)
     }
 
 
