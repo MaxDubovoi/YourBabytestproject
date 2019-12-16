@@ -33,6 +33,9 @@ class EventActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this).get(EventViewModel::class.java)
         viewModel.getEventInfo(intent.getIntExtra("id",1))
 
+        actionBar?.title = "Event"
+        supportActionBar?.title = "Event"
+
         viewModel.eventInfo.observe(this, Observer {
             it?.let {
                 binding.fullDescription.text = it.fullDescription
